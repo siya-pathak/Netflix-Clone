@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+require('dotenv').config();
 
 let initial_path = path.join(__dirname, "public");
 
@@ -18,6 +19,6 @@ app.use((req, res) => {
     res.json("404");
 })
 
-app.listen(3000, () =>{
+app.listen(process.env.PORT || 3000, () =>{
     console.log("LISTENING ON PORT 3000");
 })
