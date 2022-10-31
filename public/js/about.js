@@ -1,10 +1,12 @@
 let movie_id = location.pathname;
-//fetching movie details
+// console.log(movie_id);
+// fetching movie details
 fetch(`${movie_detail_http}${movie_id}?` + new URLSearchParams ({
     api_key: api_key
 }))
 .then(res => res.json())
 .then(data => {
+    // console.log(data);
     setupMovieInfo(data);
 })
 
@@ -57,10 +59,11 @@ fetch(`${movie_detail_http}${movie_id}/videos?` + new URLSearchParams ({
 }))
 .then(res => res.json())
 .then(data => {
-    let trailerConatiner = document.querySelector('trailer-container');
-    let maxClips = (data.results.length > 4) ? 4 : data.results.length;
+    // console.log(data);
+    let trailerContainer = document.querySelector('.trailer-container');
+    let maxClips = (data.results.length > 3) ? 3 : data.results.length;
     for(let i = 0; i < maxClips; i++) {
-        trailerConatiner.innerHTML += `
+        trailerContainer.innerHTML += `
         <iframe src="https://youtube.com/embed/${data.results[i].key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         `;
     }
