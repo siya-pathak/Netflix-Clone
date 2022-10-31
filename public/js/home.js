@@ -1,5 +1,5 @@
 const main = document.querySelector('.main');
-fetch( genres_list_http + new URLSearchParams ({
+fetch(genres_list_http + new URLSearchParams ({
     api_key: api_key
 }))
 .then(res => res.json())
@@ -10,14 +10,14 @@ fetch( genres_list_http + new URLSearchParams ({
 );
 
 const fetchMoviesListByGenres = (id, genres) => {
-    fetch(movies_genres_http + new URLSearchParams({
+    fetch(movie_genres_http + new URLSearchParams({
         api_key: api_key,
         with_genres: id,
         page: Math.floor(Math.random() * 3) + 1
     }))
     .then(res => res.json())
     .then(data => {
-        makeCategoryElement('${genres}_movies', data.results);
+        makeCategoryElement(`${genres}_movies`, data.results);
     })
     .catch(err => console.log(err));
 }
@@ -40,7 +40,7 @@ const makeCards = (id, data) => {
     data.forEach((item, i) => {
         if(item.backdrop_path == null) {
             item.backdrop_path = item.poster_path;
-            if(item.poster_path == null) {
+            if(item.backdrop_path == null) {
                 return;
             }
         }

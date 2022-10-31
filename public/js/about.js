@@ -1,6 +1,6 @@
 let movie_id = location.pathname;
 //fetching movie details
-fetch(`${movie_detail_http}${movie_id}` + new URLSearchParams ({
+fetch(`${movie_detail_http}${movie_id}?` + new URLSearchParams ({
     api_key: api_key
 }))
 .then(res => res.json())
@@ -47,7 +47,7 @@ fetch(`${movie_detail_http}${movie_id}/credits?` + new URLSearchParams ({
 .then(data => {
     const cast = document.querySelector('.starring');
     for(let i = 0; i < 5; i++) {
-        cast.innerHTML +=data.cast[i].name + formatString(i, 5);
+        cast.innerHTML += data.cast[i].name + formatString(i, 5);
     }
 })
 
@@ -82,6 +82,6 @@ fetch(`${movie_detail_http}${movie_id}/recommendations?` + new URLSearchParams (
             <img src="${img_url}${data.results[i].backdrop_path}" alt="">
             <p class="movie-title">${data.results[i].title}</p>
         </div>
-        `
+        `;
     }
 })
