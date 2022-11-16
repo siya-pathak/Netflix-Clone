@@ -3,7 +3,7 @@ This netflix clone is a dynamic site, runs on a Node.js server and uses TMDB API
 ## Features
 1. Looks similar to Netflix.
 2. Dynamic site run on Node.js server.
-3. All data is coming from TMDB API.
+3. All data is fetched from TMDB API.
 4. Dedicated Dynamic Movies Info page.
 5. Has movie trailers, and recommendations.
 6. Has smooth card slider effect.
